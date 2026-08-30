@@ -1494,6 +1494,14 @@
         "name": "Idle9",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/NewSprite32.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "NewSprite32",
+        "smoothed": false,
+        "userAdded": false
       }
     ]
   },
@@ -5181,6 +5189,68 @@
               ]
             }
           ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Lava",
+          "persistentUuid": "ba3bcfc0-9094-4f6a-9e38-13c98029e0c2",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "NewSprite",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "metadata": "{\"pskl\":{}}",
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "NewSprite32",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "objectsFolderStructure": {
@@ -5191,6 +5261,9 @@
           },
           {
             "objectName": "Tiles"
+          },
+          {
+            "objectName": "Lava"
           },
           {
             "objectName": "Fei"
@@ -6017,6 +6090,36 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "Lava",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "Health",
+                    "-",
+                    "1"
+                  ]
+                }
+              ]
             }
           ],
           "parameters": []
@@ -6142,27 +6245,168 @@
               "actions": [
                 {
                   "type": {
-                    "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "",
-                    "\"Obstacle_1\"",
-                    "Obstacle_Spawn.X()",
-                    "Obstacle_Spawn.Y()",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Delete"
-                  },
-                  "parameters": [
-                    "Obstacle_Spawn",
-                    ""
+                    "Room_Gen",
+                    "=",
+                    "RandomInRange(1,5)"
                   ]
                 }
               ],
               "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Room_Gen",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Obstacle_1\"",
+                        "Obstacle_Spawn.X()",
+                        "Obstacle_Spawn.Y()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Obstacle_Spawn",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Room_Gen",
+                        "=",
+                        "2"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Obstacle_4\"",
+                        "Obstacle_Spawn.X()",
+                        "Obstacle_Spawn.Y()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Obstacle_Spawn",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Room_Gen",
+                        "=",
+                        "3"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Obstacle_4\"",
+                        "Obstacle_Spawn.X()",
+                        "Obstacle_Spawn.Y()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Obstacle_Spawn",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Room_Gen",
+                        "=",
+                        "4"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Obstacle_4\"",
+                        "Obstacle_Spawn.X()",
+                        "Obstacle_Spawn.Y()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Obstacle_Spawn",
+                        ""
+                      ]
+                    }
+                  ]
+                },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -37876,7 +38120,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.8993607583666632,
+        "zoomFactor": 0.584378441074094,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -37884,64 +38128,8 @@
     },
     {
       "associatedLayout": "Untitled scene",
-      "name": "Basic_level3",
-      "instances": [
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 1,
-          "height": 718,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Background_1",
-          "persistentUuid": "76cb1ad7-4b7e-42bb-b99c-60ec48ec6647",
-          "width": 1281,
-          "x": 0,
-          "y": 0,
-          "zOrder": 0,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 0,
-          "height": 16,
-          "keepRatio": true,
-          "layer": "",
-          "name": "RoomGenerator",
-          "persistentUuid": "058a6529-1fa9-48fe-8e28-50f8fd182c4d",
-          "width": 16,
-          "x": 1279,
-          "y": 0,
-          "zOrder": 2,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Tiles",
-          "persistentUuid": "cd1ae887-6062-4f9e-baa7-0c3e10d275e2",
-          "width": 0,
-          "x": 0,
-          "y": 688,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [
-            {
-              "name": "tilemap",
-              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":80,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
-            }
-          ],
-          "initialVariables": []
-        }
-      ],
+      "name": "Obstacle_2",
+      "instances": [],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
@@ -37962,64 +38150,8 @@
     },
     {
       "associatedLayout": "Untitled scene",
-      "name": "Basic_level4",
-      "instances": [
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 1,
-          "height": 716,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Background_1",
-          "persistentUuid": "cd4e91b9-541c-43bd-8421-b06539837c30",
-          "width": 1281,
-          "x": 0,
-          "y": 0,
-          "zOrder": 0,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 0,
-          "height": 16,
-          "keepRatio": true,
-          "layer": "",
-          "name": "RoomGenerator",
-          "persistentUuid": "47ca39de-5939-4fe3-b21c-55f17a896525",
-          "width": 16,
-          "x": 1279,
-          "y": 0,
-          "zOrder": 2,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Tiles",
-          "persistentUuid": "2df90358-2d8a-4023-bd95-09b3963d1c1b",
-          "width": 0,
-          "x": 0,
-          "y": 688,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [
-            {
-              "name": "tilemap",
-              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":80,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
-            }
-          ],
-          "initialVariables": []
-        }
-      ],
+      "name": "Obstacle_3",
+      "instances": [],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
@@ -38032,7 +38164,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 1.4790395861757382,
+        "zoomFactor": 0.3925161175488224,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -38040,76 +38172,45 @@
     },
     {
       "associatedLayout": "Untitled scene",
-      "name": "Basic_level5",
+      "name": "Obstacle_4",
       "instances": [
         {
           "angle": 0,
           "customSize": true,
           "depth": 1,
-          "height": 718,
+          "height": 31,
           "keepRatio": true,
           "layer": "",
-          "name": "Background_1",
-          "persistentUuid": "f02a7713-659c-44e6-8c9c-5a98e5b069d0",
-          "width": 1280,
-          "x": 0,
-          "y": 0,
-          "zOrder": 0,
+          "name": "Tiles",
+          "persistentUuid": "3f32eb41-c456-49b0-8860-d6f62832fb7d",
+          "width": 487,
+          "x": -1,
+          "y": 106,
+          "zOrder": 1,
           "numberProperties": [],
-          "stringProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":30,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
+            }
+          ],
           "initialVariables": []
         },
         {
           "angle": 0,
           "customSize": true,
-          "depth": 0.34782608695652173,
-          "height": 16,
+          "depth": 1,
+          "height": 39,
+          "keepRatio": true,
           "layer": "",
-          "name": "RoomGenerator",
-          "persistentUuid": "b40d828e-206a-4fe3-9d12-57819f43f806",
-          "width": 16,
-          "x": 1279,
-          "y": 0,
+          "name": "Lava",
+          "persistentUuid": "a19a2b61-d425-4d14-b954-d626abd67e3a",
+          "width": 485,
+          "x": 2,
+          "y": 221,
           "zOrder": 2,
           "numberProperties": [],
           "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Tiles",
-          "persistentUuid": "1d1e326e-7ca2-43a0-88f5-84b5b062f93d",
-          "width": 0,
-          "x": 966,
-          "y": -79,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Tiles",
-          "persistentUuid": "4bc602e6-f2bf-4768-a3b6-f4b98319fcb6",
-          "width": 0,
-          "x": 0,
-          "y": 688,
-          "zOrder": 4,
-          "numberProperties": [],
-          "stringProperties": [
-            {
-              "name": "tilemap",
-              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":80,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
-            }
-          ],
           "initialVariables": []
         }
       ],
@@ -38125,7 +38226,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.7876290101673754,
+        "zoomFactor": 0.5653158055126308,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -38134,63 +38235,7 @@
     {
       "associatedLayout": "Untitled scene",
       "name": "Intermediate_level1",
-      "instances": [
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 1,
-          "height": 719,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Background_2",
-          "persistentUuid": "2739d906-56c8-455b-8dd4-3ba44b4577b9",
-          "width": 1280,
-          "x": 0,
-          "y": 0,
-          "zOrder": 0,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Tiles",
-          "persistentUuid": "44faafcf-aec3-4f19-a660-c424e56476d2",
-          "width": 0,
-          "x": 0,
-          "y": 688,
-          "zOrder": 1,
-          "numberProperties": [],
-          "stringProperties": [
-            {
-              "name": "tilemap",
-              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":80,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
-            }
-          ],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 0,
-          "height": 16,
-          "keepRatio": true,
-          "layer": "",
-          "name": "RoomGenerator",
-          "persistentUuid": "f3ff5d3d-79b7-4565-8c88-adf12e96d9f3",
-          "width": 16,
-          "x": 1279,
-          "y": 0,
-          "zOrder": 2,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        }
-      ],
+      "instances": [],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
