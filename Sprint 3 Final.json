@@ -1502,6 +1502,14 @@
         "name": "NewSprite32",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/Heart2.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "Heart",
+        "smoothed": false,
+        "userAdded": false
       }
     ]
   },
@@ -1531,6 +1539,11 @@
       "persistentUuid": "025de5d2-126d-4cc4-b974-ed0998a79905",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "Item_Gen",
+      "type": "number",
+      "value": 0
     }
   ],
   "layouts": [
@@ -1556,7 +1569,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.5843784410740935,
+        "zoomFactor": 0.6040838749988878,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -1574,8 +1587,8 @@
           "name": "Background_1",
           "persistentUuid": "26dadfa9-239c-438f-8779-2c03acb1248a",
           "width": 1280,
-          "x": 1,
-          "y": -1,
+          "x": 2,
+          "y": 0,
           "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
@@ -1831,6 +1844,23 @@
           "x": 1022,
           "y": 597,
           "zOrder": 16,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 18,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Heart",
+          "persistentUuid": "a596a801-1c0d-440f-ac66-6db5c3db0e86",
+          "width": 24,
+          "x": 985,
+          "y": 638,
+          "zOrder": 24,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2733,7 +2763,7 @@
                 {
                   "looping": false,
                   "metadata": "{\"pskl\":{}}",
-                  "timeBetweenFrames": 0.08,
+                  "timeBetweenFrames": 2,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
@@ -4047,7 +4077,7 @@
                 {
                   "looping": false,
                   "metadata": "{\"pskl\":{}}",
-                  "timeBetweenFrames": 0.08,
+                  "timeBetweenFrames": 0.025,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
@@ -4911,16 +4941,17 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "Heart",
               "useMultipleDirections": false,
               "directions": [
                 {
                   "looping": true,
+                  "metadata": "{\"pskl\":{}}",
                   "timeBetweenFrames": 0.025,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
-                      "image": "Heart.png",
+                      "image": "Heart",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -4940,16 +4971,16 @@
                             "y": 0
                           },
                           {
-                            "x": 12,
+                            "x": 24,
                             "y": 0
                           },
                           {
-                            "x": 12,
-                            "y": 9
+                            "x": 24,
+                            "y": 18
                           },
                           {
                             "x": 0,
-                            "y": 9
+                            "y": 18
                           }
                         ]
                       ]
@@ -6096,13 +6127,9 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "CollisionNP"
+                    "value": "SceneJustBegins"
                   },
                   "parameters": [
-                    "Fei",
-                    "Lava",
-                    "",
-                    "",
                     ""
                   ]
                 }
@@ -6110,13 +6137,86 @@
               "actions": [
                 {
                   "type": {
-                    "value": "SetNumberObjectVariable"
+                    "value": "ResetTimer"
                   },
                   "parameters": [
-                    "Fei",
-                    "Health",
-                    "-",
-                    "1"
+                    "",
+                    "\"Dmg Timer\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Dmg Timer\"",
+                    ">",
+                    "0.5"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CollisionNP"
+                      },
+                      "parameters": [
+                        "Fei",
+                        "Lava",
+                        "",
+                        "",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "Fei",
+                        "Health",
+                        "-",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ResizableCapability::ResizableBehavior::SetWidth"
+                      },
+                      "parameters": [
+                        "Health_Bar_Fill",
+                        "Resizable",
+                        "=",
+                        "clamp(Fei.Variable(Health)/Fei.Variable(MaxHealth)*175,0,175)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ResetTimer"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Dmg Timer\""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -6352,7 +6452,7 @@
                       },
                       "parameters": [
                         "",
-                        "\"Obstacle_4\"",
+                        "\"Obstacle_1\"",
                         "Obstacle_Spawn.X()",
                         "Obstacle_Spawn.Y()",
                         ""
@@ -6429,23 +6529,204 @@
                   "actions": [
                     {
                       "type": {
-                        "value": "Create"
+                        "value": "SetNumberVariable"
                       },
                       "parameters": [
-                        "",
-                        "Angus",
-                        "Object_spawn.X()",
-                        "Object_spawn.Y()",
-                        ""
+                        "Item_Gen",
+                        "=",
+                        "RandomInRange(1,4)"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "Item_Gen",
+                            "=",
+                            "1"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Angus",
+                            "Object_spawn.X()",
+                            "Object_spawn.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Object_spawn",
+                            ""
+                          ]
+                        }
                       ]
                     },
                     {
-                      "type": {
-                        "value": "Delete"
-                      },
-                      "parameters": [
-                        "Object_spawn",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "Item_Gen",
+                            "=",
+                            "2"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Heart",
+                            "Object_spawn.X()",
+                            "Object_spawn.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Object_spawn",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "Item_Gen",
+                            "=",
+                            "1"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Angus",
+                            "Object_spawn.X()",
+                            "Object_spawn.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Object_spawn",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "Item_Gen",
+                            "=",
+                            "3"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Angus",
+                            "Object_spawn.X()",
+                            "Object_spawn.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Object_spawn",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "Item_Gen",
+                            "=",
+                            "4"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Angus",
+                            "Object_spawn.X()",
+                            "Object_spawn.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Object_spawn",
+                            ""
+                          ]
+                        }
                       ]
                     }
                   ]
@@ -6543,7 +6824,7 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "name": "Coins",
+          "name": "Coins and Items",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
           "events": [
@@ -6604,6 +6885,62 @@
                     "",
                     "50",
                     ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "Heart",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Heart",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "Health",
+                    "=",
+                    "5"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ResizableCapability::ResizableBehavior::SetWidth"
+                  },
+                  "parameters": [
+                    "Health_Bar_Fill",
+                    "Resizable",
+                    "=",
+                    "clamp(Fei.Variable(Health)/Fei.Variable(MaxHealth)*175,0,175)"
                   ]
                 }
               ]
@@ -6715,6 +7052,24 @@
                     "Animation",
                     "=",
                     "\"Death\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ActivateBehavior"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "PlatformerObject",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "1"
                   ]
                 },
                 {
@@ -38027,8 +38382,8 @@
           "name": "Object_spawn",
           "persistentUuid": "5eceb7ed-195e-4f6a-9e17-402b36620ec0",
           "width": 35,
-          "x": 127,
-          "y": -43,
+          "x": 128,
+          "y": -33,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
@@ -38044,8 +38399,8 @@
           "name": "Object_spawn",
           "persistentUuid": "41bc3822-2f55-4d8c-8fac-684c5fc0c5ab",
           "width": 35,
-          "x": 240,
-          "y": -45,
+          "x": 241,
+          "y": -33,
           "zOrder": 6,
           "numberProperties": [],
           "stringProperties": [],
@@ -38061,8 +38416,8 @@
           "name": "Object_spawn",
           "persistentUuid": "5d88c3ca-c4cc-4724-af1f-f28f965f41fa",
           "width": 35,
-          "x": 183,
-          "y": -43,
+          "x": 182,
+          "y": -32,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
@@ -38079,7 +38434,7 @@
           "persistentUuid": "8546f013-b1a2-4efa-be5c-35a42346c155",
           "width": 35,
           "x": 302,
-          "y": -46,
+          "y": -34,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
@@ -38209,6 +38564,210 @@
           "x": 2,
           "y": 221,
           "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "0c15c9fd-868d-45ca-a106-d909ea81b673",
+          "width": 24,
+          "x": 27,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "8fba9488-32b1-4393-b023-dcd9a68816c4",
+          "width": 24,
+          "x": 80,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "dce8cfa7-4f0e-4469-bee3-5e5ad14fc0fb",
+          "width": 24,
+          "x": 141,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "49450105-d4f9-40a2-a76e-22b8dc761641",
+          "width": 24,
+          "x": 206,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "2405a013-7f4a-4768-ae41-43521bff865a",
+          "width": 24,
+          "x": 271,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "d4a17378-dcc7-425a-86b4-087148b1515c",
+          "width": 24,
+          "x": 317,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "4e95db6e-8b4b-4ebb-9fb2-53b3168ab467",
+          "width": 24,
+          "x": 377,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "bb3f0572-3b16-443c-9896-97ba3f0f99ce",
+          "width": 24,
+          "x": 436,
+          "y": 70,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "76d07d1f-7ab8-466c-87c8-1719a5609cd0",
+          "width": 24,
+          "x": 81,
+          "y": 71,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "d23f1d61-1119-41f8-b66b-82785808eca1",
+          "width": 24,
+          "x": 205,
+          "y": 71,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "6fe3d8f6-430a-43a6-8239-32a92b2ba681",
+          "width": 24,
+          "x": 377,
+          "y": 70,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "2e6cb78e-cb4a-44f7-a92c-e71f6f3ca690",
+          "width": 24,
+          "x": 436,
+          "y": 70,
+          "zOrder": 4,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
