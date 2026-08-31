@@ -1569,7 +1569,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.6040838749988878,
+        "zoomFactor": 1.0973679695629524,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -2032,7 +2032,7 @@
             {
               "name": "FireBullet",
               "type": "FireBullet::FireBullet",
-              "FireCooldown": 0.1,
+              "FireCooldown": 0.4,
               "HasJustFired": false,
               "RotateBullet": true,
               "FiringArc": 45,
