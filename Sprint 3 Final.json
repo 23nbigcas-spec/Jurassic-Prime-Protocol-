@@ -1587,7 +1587,7 @@
           "name": "Background_1",
           "persistentUuid": "26dadfa9-239c-438f-8779-2c03acb1248a",
           "width": 1280,
-          "x": 2,
+          "x": 0,
           "y": 0,
           "zOrder": 0,
           "numberProperties": [],
@@ -1687,7 +1687,7 @@
           "height": 59,
           "keepRatio": true,
           "layer": "UI_layer",
-          "name": "OperatorPlusBitmapText",
+          "name": "UI___score",
           "persistentUuid": "14ebe334-577b-4075-86f4-464a403155af",
           "width": 470,
           "x": 25,
@@ -1864,6 +1864,60 @@
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Tiles",
+          "persistentUuid": "b4b4af1e-cd26-4d72-858b-f6e49c9dd4f4",
+          "width": 0,
+          "x": -11,
+          "y": 395,
+          "zOrder": 25,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":1,\"dimY\":20,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[91],[139],[187],[235],[283],[91],[139],[187],[235],[283],[91],[139],[187],[235],[283],[91],[139],[187],[235],[283]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Additional_info",
+          "persistentUuid": "f42011b5-f23f-4391-8106-befc82760157",
+          "width": 0,
+          "x": 645,
+          "y": 339,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 23,
+          "keepRatio": true,
+          "layer": "UI_layer",
+          "name": "exit",
+          "persistentUuid": "a71f63df-5daf-4030-a664-e86a29f5ed4a",
+          "width": 70,
+          "x": 991,
+          "y": 24,
+          "zOrder": 27,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
         }
       ],
       "objects": [
@@ -1986,7 +2040,7 @@
               "AngleVariance": 0,
               "BulletSpeedVariance": 0,
               "AmmoQuantity": 0,
-              "ShotsPerReload": 0,
+              "ShotsPerReload": 5,
               "ReloadDuration": 1,
               "MaxAmmo": 0,
               "ShotsBeforeNextReload": 0,
@@ -3568,7 +3622,7 @@
               "useMultipleDirections": false,
               "directions": [
                 {
-                  "looping": false,
+                  "looping": true,
                   "metadata": "{\"pskl\":{}}",
                   "timeBetweenFrames": 0.07,
                   "sprites": [
@@ -4424,7 +4478,7 @@
         },
         {
           "assetStoreId": "4823f168c941818ff4e0396fc6a3ccec2dc18ade7d350364d57d4f8f096cc9b9",
-          "name": "OperatorPlusBitmapText",
+          "name": "UI___score",
           "persistentUuid": "dff1724f-0c81-438d-aebb-38e75a65fb22",
           "type": "BitmapText::BitmapTextObject",
           "variables": [],
@@ -5282,6 +5336,111 @@
               ]
             }
           ]
+        },
+        {
+          "assetStoreId": "",
+          "name": "FallthruTileMap2",
+          "persistentUuid": "5264e530-1cdc-4d87-a984-b2f4549eb5ae",
+          "type": "TileMap::SimpleTileMap",
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "Platform",
+              "type": "PlatformBehavior::PlatformBehavior",
+              "canBeGrabbed": true,
+              "platformType": "Jumpthru",
+              "yGrabOffset": 0
+            },
+            {
+              "name": "RectangleMovement",
+              "type": "RectangleMovement::RectangleMovement",
+              "Width": 0,
+              "Height": 300,
+              "Clockwise": true,
+              "HorizontalEdgeDuration": 0,
+              "VerticalEdgeDuration": 5,
+              "Left": 0,
+              "Top": 0,
+              "Progress": 0,
+              "OldX": 0,
+              "OldY": 0,
+              "Easing": "easeInOutSine",
+              "InitialPosition": "Top-left corner",
+              "ToogleClockwise": false
+            }
+          ],
+          "content": {
+            "atlasImage": "../../Downloads/brackeys_platformer_assets/sprites/world_tileset.png",
+            "rowCount": 16,
+            "columnCount": 16,
+            "tileSize": 16,
+            "tilesWithHitBox": "0,116,132,148,164,180,196,212,228,244,117,133,149,165,181,197,213,229,245,118,134,150,166,182,198,214,230,246,119,135,151,167,183,199,215,231,247,120,136,152,168,184,200,216,232,248,121,137,153,169,185,201,217,233,249,122,138,154,170,186,202,218,234,250,123,139,155,171,187,203,219,235,10"
+          }
+        },
+        {
+          "assetStoreId": "4823f168c941818ff4e0396fc6a3ccec2dc18ade7d350364d57d4f8f096cc9b9",
+          "name": "Additional_info",
+          "persistentUuid": "12ecf499-4753-4179-92b1-579ffdb9595a",
+          "type": "BitmapText::BitmapTextObject",
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "content": {
+            "text": "Use cursor to aim gun\n\nTouch Hearts to regain \nhealth",
+            "opacity": 255,
+            "scale": 1,
+            "fontSize": 20,
+            "tint": "0;0;0",
+            "bitmapFontResourceName": "assets\\8BitOperatorPlus8Regular_Edited.fnt",
+            "textureAtlasResourceName": "assets\\8BitOperatorPlus8Regular_Edited.png",
+            "align": "center",
+            "verticalTextAlignment": "top"
+          }
+        },
+        {
+          "assetStoreId": "4823f168c941818ff4e0396fc6a3ccec2dc18ade7d350364d57d4f8f096cc9b9",
+          "name": "exit",
+          "persistentUuid": "677d7981-4a7a-4475-84bc-522f59717232",
+          "type": "BitmapText::BitmapTextObject",
+          "variables": [],
+          "effects": [
+            {
+              "effectType": "Outline",
+              "name": "Effect",
+              "doubleParameters": {
+                "padding": 0,
+                "thickness": 2
+              },
+              "stringParameters": {
+                "color": "255;0;0"
+              },
+              "booleanParameters": {}
+            }
+          ],
+          "behaviors": [
+            {
+              "name": "ButtonFSM",
+              "type": "ButtonStates::ButtonFSM",
+              "ShouldCheckHovering": true,
+              "State": "Idle",
+              "TouchId": 0,
+              "TouchIsInside": false,
+              "MouseIsInside": false,
+              "Index": 0
+            }
+          ],
+          "content": {
+            "text": "Exit",
+            "opacity": 255,
+            "scale": 2,
+            "fontSize": 20,
+            "tint": "255;255;255",
+            "bitmapFontResourceName": "assets\\8BitOperatorPlus8Regular_Edited.fnt",
+            "textureAtlasResourceName": "assets\\8BitOperatorPlus8Regular_Edited.png",
+            "align": "left",
+            "verticalTextAlignment": "top"
+          }
         }
       ],
       "objectsFolderStructure": {
@@ -5292,6 +5451,12 @@
           },
           {
             "objectName": "Tiles"
+          },
+          {
+            "objectName": "Additional_info"
+          },
+          {
+            "objectName": "exit"
           },
           {
             "objectName": "Lava"
@@ -5315,7 +5480,7 @@
             "objectName": "Tutorial"
           },
           {
-            "objectName": "OperatorPlusBitmapText"
+            "objectName": "UI___score"
           },
           {
             "objectName": "Background_2"
@@ -5325,6 +5490,9 @@
           },
           {
             "objectName": "FallthruTileMap"
+          },
+          {
+            "objectName": "FallthruTileMap2"
           },
           {
             "objectName": "Coin"
@@ -6062,6 +6230,40 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Score",
+                    ">=",
+                    "100"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Health",
+                    "=",
+                    "10"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
                     "value": "NumberObjectVariable"
                   },
                   "parameters": [
@@ -6114,7 +6316,7 @@
                     "value": "TextContainerCapability::TextContainerBehavior::SetValue"
                   },
                   "parameters": [
-                    "OperatorPlusBitmapText",
+                    "UI___score",
                     "Text",
                     "=",
                     "\"Score: \" + Score"
@@ -6217,6 +6419,182 @@
                         "\"Dmg Timer\""
                       ]
                     }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "PlatformBehavior::PlatformerObjectBehavior::IsMovingEvenALittle"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "PlatformerObject"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Animation",
+                    "=",
+                    "\"Walking\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "SceneJustBegins"
+                  },
+                  "parameters": [
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Dno_Tmr\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Dno_Tmr\"",
+                    ">",
+                    "2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Animation",
+                    "=",
+                    "\"Bite\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Dno_Tmr\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Animation"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Animation",
+                    "=",
+                    "\"Walking\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "PosX"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "<",
+                    "Angus.X()"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "FlippableCapability::FlippableBehavior::FlipX"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Flippable",
+                    "yes"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "PosX"
+                  },
+                  "parameters": [
+                    "Fei",
+                    ">",
+                    "Angus.X()"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "FlippableCapability::FlippableBehavior::FlipX"
+                  },
+                  "parameters": [
+                    "Angus",
+                    "Flippable",
+                    "no"
                   ]
                 }
               ]
@@ -6414,7 +6792,7 @@
                       },
                       "parameters": [
                         "",
-                        "\"Obstacle_4\"",
+                        "\"Obstacle_2\"",
                         "Obstacle_Spawn.X()",
                         "Obstacle_Spawn.Y()",
                         ""
@@ -6452,7 +6830,7 @@
                       },
                       "parameters": [
                         "",
-                        "\"Obstacle_1\"",
+                        "\"Obstacle_3\"",
                         "Obstacle_Spawn.X()",
                         "Obstacle_Spawn.Y()",
                         ""
@@ -6824,6 +7202,103 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
+          "name": "Exit",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "ButtonStates::ButtonFSM::IsClicked"
+                  },
+                  "parameters": [
+                    "exit",
+                    "ButtonFSM",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Fei",
+                    "Health",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "ButtonStates::ButtonFSM::IsHovered"
+                  },
+                  "parameters": [
+                    "exit",
+                    "ButtonFSM",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::EnableEffect"
+                  },
+                  "parameters": [
+                    "exit",
+                    "Effect",
+                    "\"Effect\"",
+                    "yes"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "ButtonStates::ButtonFSM::IsHovered"
+                  },
+                  "parameters": [
+                    "exit",
+                    "ButtonFSM",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::EnableEffect"
+                  },
+                  "parameters": [
+                    "exit",
+                    "Effect",
+                    "\"Effect\"",
+                    "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
           "name": "Coins and Items",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -6869,7 +7344,7 @@
                     "value": "TextContainerCapability::TextContainerBehavior::SetValue"
                   },
                   "parameters": [
-                    "OperatorPlusBitmapText",
+                    "UI___score",
                     "Text",
                     "=",
                     "\"Score: \" + Score"
@@ -7147,6 +7622,11 @@
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
         }
       ],
       "layers": [
@@ -7274,6 +7754,10 @@
         {
           "name": "Animation",
           "type": "AnimatableCapability::AnimatableBehavior"
+        },
+        {
+          "name": "ButtonFSM",
+          "type": "ButtonStates::ButtonFSM"
         },
         {
           "name": "Effect",
@@ -38484,7 +38968,149 @@
     {
       "associatedLayout": "Untitled scene",
       "name": "Obstacle_2",
-      "instances": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 146,
+          "keepRatio": true,
+          "layer": "",
+          "name": "FallthruTileMap",
+          "persistentUuid": "8b0e6bfe-137e-4d5b-ab0a-7262e16f12f0",
+          "width": 490,
+          "x": 3,
+          "y": 72,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":14,\"dimY\":3,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[-1,-1,-1,-1,-1,-1,10,10,-1,-1,-1,-1,-1,-1],[-1,-1,-1,10,10,-1,-1,-1,-1,10,10,-1,-1,-1],[10,10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,10,10]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 40,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Lava",
+          "persistentUuid": "799f3237-7bcc-4b83-ad89-4d5f305ff5f8",
+          "width": 508,
+          "x": 2,
+          "y": 230,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "4fa1ffbd-23de-404b-96a9-4265c71230c9",
+          "width": 24,
+          "x": 27,
+          "y": 144,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "0325f6d9-b413-4a6f-8cab-88749a9a1699",
+          "width": 24,
+          "x": 128,
+          "y": 94,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "684688c9-418a-423e-a00f-e9020e9ebcae",
+          "width": 24,
+          "x": 234,
+          "y": 42,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "1eaee0c4-bd9f-46da-831d-d49de2cf2838",
+          "width": 24,
+          "x": 341,
+          "y": 91,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "ef4e7a39-8720-4aba-a407-df894a69868e",
+          "width": 24,
+          "x": 445,
+          "y": 144,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "8fb95c40-8060-4fd2-8bb9-05763b42e9c2",
+          "width": 32,
+          "x": 228,
+          "y": 36,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
@@ -38506,7 +39132,277 @@
     {
       "associatedLayout": "Untitled scene",
       "name": "Obstacle_3",
-      "instances": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Tiles",
+          "persistentUuid": "63183e35-2bac-489c-8b0d-75a4d04f63ea",
+          "width": 0,
+          "x": 128,
+          "y": -90,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":6,\"dimY\":24,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486],[388,389,390,388,389,390],[436,437,438,436,437,438],[484,485,486,484,485,486]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "FallthruTileMap2",
+          "persistentUuid": "1417cdd8-3011-4ac7-8af3-5e26ef9ba509",
+          "width": 96,
+          "x": 19,
+          "y": -88,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":3,\"dimY\":1,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[10,10,10]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "FallthruTileMap2",
+          "persistentUuid": "2bc6202c-8229-4ff0-ae68-1a403072acf3",
+          "width": 96,
+          "x": 236,
+          "y": -88,
+          "zOrder": 5,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":3,\"dimY\":1,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[10,10,10]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "473f8999-d557-4b57-a18e-0fb19c1a363b",
+          "width": 24,
+          "x": 141,
+          "y": -123,
+          "zOrder": 6,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Object_spawn",
+          "persistentUuid": "ad461778-faae-48a1-8402-12ebcf27a3a5",
+          "width": 24,
+          "x": 184,
+          "y": -123,
+          "zOrder": 7,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "0a4e190d-a8b5-4ad2-a93d-a9dbcca0ad35",
+          "width": 24,
+          "x": 62,
+          "y": -36,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "6fe058ec-1e13-402d-91d7-57fb4b8a3a6a",
+          "width": 24,
+          "x": 62,
+          "y": 25,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "7ba6662d-d32f-4c19-b534-88751db60caa",
+          "width": 24,
+          "x": 62,
+          "y": 91,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "4ec4494c-4ef7-4b7c-94b2-ef1900fc9374",
+          "width": 24,
+          "x": 62,
+          "y": 155,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "f04469f4-9e09-457a-b39a-5dedb4df8c52",
+          "width": 24,
+          "x": 62,
+          "y": 215,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "c5b38721-e85e-4d7c-85cc-a46d852f6043",
+          "width": 24,
+          "x": 260,
+          "y": -41,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "8fe77a31-6112-4900-9391-07904be50e89",
+          "width": 24,
+          "x": 260,
+          "y": 20,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "1327cd5c-ddc9-4e00-ad4e-60de7cfce39f",
+          "width": 24,
+          "x": 260,
+          "y": 86,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "df9ebeeb-bd66-4ae7-88b3-8159fc47179d",
+          "width": 24,
+          "x": 260,
+          "y": 150,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 24,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Coin_spawn",
+          "persistentUuid": "5910ddd4-fdaa-4918-8638-26f0251e43e5",
+          "width": 24,
+          "x": 260,
+          "y": 210,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
@@ -38519,7 +39415,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.3925161175488224,
+        "zoomFactor": 0.5290357402156839,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -38794,7 +39690,97 @@
     {
       "associatedLayout": "Untitled scene",
       "name": "Intermediate_level1",
-      "instances": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 15,
+          "keepRatio": true,
+          "layer": "",
+          "name": "RoomGenerator",
+          "persistentUuid": "70d733ba-e756-454c-bd5f-cfa683266d91",
+          "width": 15,
+          "x": 1279,
+          "y": 0,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Tiles",
+          "persistentUuid": "de1b4e79-c947-473d-b9cc-d27fe0199b22",
+          "width": 0,
+          "x": 0,
+          "y": 688,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [
+            {
+              "name": "tilemap",
+              "value": "{\"tileWidth\":16,\"tileHeight\":16,\"dimX\":80,\"dimY\":2,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682,673,674,675,676,677,678,679,680,681,682],[721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730,721,722,723,724,725,726,727,728,729,730]]}]}"
+            }
+          ],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 721,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Background_2",
+          "persistentUuid": "bb8a9430-0274-4d37-ae2f-b9c82fc1c460",
+          "width": 1283,
+          "x": 0,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Obstacle_Spawn",
+          "persistentUuid": "60e4c7ba-0b97-4ab0-99c9-b360e140bc0f",
+          "width": 32,
+          "x": 285,
+          "y": 453,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Obstacle_Spawn",
+          "persistentUuid": "2dfb3400-f796-4be3-b1d9-8ea522d29af6",
+          "width": 32,
+          "x": 934,
+          "y": 453,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
       "editionSettings": {
         "grid": false,
         "gridType": "rectangular",
